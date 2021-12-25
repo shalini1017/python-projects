@@ -1,11 +1,15 @@
 import random
 
-start = 0
+start = 0  # start of range
 
 print("welcome to the number guesser game")
 
 
 def take_user_input():
+    """
+    Ask the user to provide the top value for range
+    :return: The top value for range
+    """
     top_of_range = 0
 
     try:
@@ -21,6 +25,12 @@ def take_user_input():
 
 
 def play():
+    """
+    Takes the top value of range from take_user_input() and
+    asks user to guess a number in the range of 0 to top value.
+    Gives user 5 tries to guess the correct number and asks if
+    user wants to play again.
+    """
     top_of_range = take_user_input()
     random_number = random.randrange(top_of_range)
     print(random_number)
@@ -40,6 +50,10 @@ def play():
 
 
 def ask_play_again():
+    """
+    Asks if the user wants to play again.Acceptable
+    inputs from user are y/Y/n/N
+    """
     play_again = input("You want to play again? (y/n) ")
     if play_again.lower() == "y":
         play()
