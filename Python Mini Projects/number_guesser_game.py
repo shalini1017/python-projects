@@ -10,6 +10,9 @@ def take_user_input():
 
     try:
         top_of_range = int(input("Please type top of range: "))
+        if top_of_range <= 0:
+            print("Please enter a positive number next time")
+            quit()
     except ValueError:
         print("Oops! That is not a valid number. Try again..")
         quit()
