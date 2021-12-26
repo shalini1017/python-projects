@@ -8,6 +8,10 @@ print("select a choice from the given list")
 
 
 def take_user1_input():
+    """
+    Takes user1 input choice
+    :return: user1 input choice
+    """
     user1_input = input("Enter your choice: ").lower()
     if user1_input not in input_choices:
         print("Invalid input, please select from the given list")
@@ -16,11 +20,19 @@ def take_user1_input():
 
 
 def take_user2_input():
+    """
+    :return: user2 input choice.
+    computer is user2 here.
+    """
     user2_input = random.choice(input_choices)
     return user2_input
 
 
 def play():
+    """
+    Defines the game rules and decides who wins by
+    comparing the user1 and user2 input choices
+    """
     user1_input = take_user1_input()
     user2_input = take_user2_input()
     input_dict = {"user1": user1_input, "user2": user2_input}
@@ -47,6 +59,10 @@ def play():
 
 
 def play_again():
+    """
+    Asks the user1 if he wants to play again.
+    Acceptable inputs from user1 are 'y' or 'n'
+    """
     playing = input("want to play again? (y/n): ").lower()
     if playing == "y":
         play()
