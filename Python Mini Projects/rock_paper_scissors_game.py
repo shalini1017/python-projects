@@ -78,7 +78,7 @@ def play_again():
     Asks the user1 if he wants to play again.
     Acceptable inputs from user1 are 'y' or 'n'
     """
-    playing = input("want to play again? (y/n): ").lower()
+    playing = input("want to play again? (y/n): ").lower().strip()
     if playing == "y":
         play()
     elif playing == "n":
