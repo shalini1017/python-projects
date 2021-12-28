@@ -1,10 +1,16 @@
 import random
 
-input_choices = ["rock", "paper", "scissors"]
-print("Welcome to the rock paper scissors game")
+print("\n**** Welcome to the rock paper scissors game ****\n")
+print("Here are the game winning rules:\n\n Rock vs paper-> paper wins\n\n Rock vs scissor-> Rock wins\n\n\
+ paper vs scissor-> scissor wins.\n\n")
 
-print(f"input choices: {input_choices}")
-print("select a choice from the given list")
+input_choices = ["rock", "paper", "scissor"]
+
+print(f"select an option from the following:\n option 1: {input_choices[0]}\n\
+ option 2: {input_choices[1]}\n option 3: {input_choices[2]}\n")
+
+# print(f"input choices: {input_choices}")
+print("select an option")
 
 
 def take_user1_input():
@@ -12,11 +18,19 @@ def take_user1_input():
     Takes user1 input choice
     :return: user1 input choice
     """
-    user1_input = input("Enter your choice: ").lower()
-    if user1_input not in input_choices:
-        print("Invalid input, please select from the given list")
+    try:
+        user1_input = int(input("Enter your choice: "))
+
+        if 0 < user1_input <= 3:
+            print(f"you chose {input_choices[user1_input-1]}")
+        else:
+            print("You chose an invalid option")
+            quit()
+        return user1_input
+
+    except ValueError:
+        print("Please select a numeric (1,2 or 3) option next time")
         quit()
-    return user1_input
 
 
 def take_user2_input():
@@ -24,7 +38,8 @@ def take_user2_input():
     :return: user2 input choice.
     computer is user2 here.
     """
-    user2_input = random.choice(input_choices)
+    user2_input = random.randint(1, 3)
+    print(f"user2 chose {input_choices[user2_input-1]}")
     return user2_input
 
 
@@ -37,19 +52,19 @@ def play():
     user2_input = take_user2_input()
     input_dict = {"user1": user1_input, "user2": user2_input}
 
-    if list(input_dict.values()) == ["rock", "paper"] or list(input_dict.values()) == ["paper", "rock"]:
+    if list(input_dict.values()) == [1, 2] or list(input_dict.values()) == [2, 1]:
         for key, val in input_dict.items():
-            if val == "paper":
+            if val == 2:
                 print(f"{key} wins")
 
-    if list(input_dict.values()) == ["rock", "scissors"] or list(input_dict.values()) == ["scissors", "rock"]:
+    if list(input_dict.values()) == [1, 3] or list(input_dict.values()) == [3, 1]:
         for key, val in input_dict.items():
-            if val == "rock":
+            if val == 1:
                 print(f"{key} wins")
 
-    if list(input_dict.values()) == ["scissors", "paper"] or list(input_dict.values()) == ["paper", "scissors"]:
+    if list(input_dict.values()) == [3, 2] or list(input_dict.values()) == [2, 3]:
         for key, val in input_dict.items():
-            if val == "scissors":
+            if val == 3:
                 print(f"{key} wins")
 
     if input_dict["user1"] == input_dict["user2"]:
